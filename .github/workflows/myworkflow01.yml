@@ -17,10 +17,15 @@ jobs:
           stp-env: '03-STP-ENV'
       - name: My Step 02 from job01
         id: job01step02
-        run: echo "this is step02 from job01"
+        run: echo "this is step02 from job01. ${{ env.test}}"
       - name: My Step 03 from job01
         id: job01step03
-        run: echo "this is step03 from job01"
+        run: |
+          echo "this is step03 from job01"
+          echo ${{ env.WF-ENV }}
+          echo ${{ env.jbs-env }}
+          echo ${{ vars.REFVAR01 }}
+          echo ${{ secrets.rs01 }}
   myjob02:
     name: My Job two
     runs-on: ubuntu-latest
