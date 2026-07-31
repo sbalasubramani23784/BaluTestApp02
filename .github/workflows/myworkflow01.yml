@@ -1,14 +1,20 @@
 name: MyWF01
 on:
   workflow_dispatch:
-jobs:
-  myjob01:
+env:
+  WF-ENV: '01-WF-ENV'
+jobs:  
+  myjob01:  
     name: My Job One
     runs-on: ubuntu-latest
+    env:
+      jbs-env: '02-JBS-ENV'
     steps:
       - name: My Step 01 from job01
-        id: job01step01
-        run: echo "this is step01 from job01"
+        id: job01step01        
+        run: echo "this is step02 from job01, WF-ENV - ${{ env.WF-ENV }}, jbs-env - ${{ env.jbs-env}}, stp-env - ${{ env.stp-env}}"
+        env: 
+          stp-env: '03-STP-ENV'
       - name: My Step 02 from job01
         id: job01step02
         run: echo "this is step02 from job01"
