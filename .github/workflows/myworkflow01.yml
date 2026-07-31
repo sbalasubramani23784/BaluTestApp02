@@ -22,6 +22,7 @@ jobs:
         id: job01step03
         run: |
           echo "this is step03 from job01"
+          echo ${{ github.actor }}
           echo ${{ env.WF-ENV }}
           echo ${{ env.jbs-env }}
           echo ${{ vars.REFVAR01 }}
