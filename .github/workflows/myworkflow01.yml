@@ -6,7 +6,7 @@ env:
 jobs:  
   myjob01:  
     name: My Job One
-    runs-on: ubuntu-latest
+    runs-on: TBS
     env:
       jbs-env: '02-JBS-ENV'
     steps:
@@ -34,7 +34,7 @@ jobs:
           sleep 20
   myjob02:
     name: My Job two
-    runs-on: ubuntu-latest
+    runs-on: TBS
     needs: [myjob01]
     steps:
       - name: My Step 01 from job02
@@ -54,7 +54,7 @@ jobs:
           sleep 30
   myjob03:
     name: My Job three
-    runs-on: ubuntu-latest    
+    runs-on: TBS    
     steps:
       - name: My Step 01 from job03
         id: job03step01
