@@ -6,12 +6,13 @@ env:
 jobs:  
   myjob01:  
     name: My Job One
-    runs-on: TBS
+    runs-on: self-hosted
     env:
       jbs-env: '02-JBS-ENV'
     steps:
       - name: My Step 01 from job01
-        id: job01step01        
+        id: job01step01 
+        shell: cmd       
         run: |
           echo "this is step02 from job01, WF-ENV - ${{ env.WF-ENV }}, jbs-env - ${{ env.jbs-env}}, stp-env - ${{ env.stp-env}}, rs01 - ${{ secrets.rs01 }}"
           sleep 20
@@ -19,11 +20,13 @@ jobs:
           stp-env: '03-STP-ENV'
       - name: My Step 02 from job01
         id: job01step02
+        shell: cmd
         run: |
           echo "this is step02 from job01. ${{ env.test}}"
           sleep 20
       - name: My Step 03 from job01
         id: job01step03
+        shell: cmd
         run: |
           echo "this is step03 from job01"
           echo ${{ github.actor }}
@@ -34,41 +37,47 @@ jobs:
           sleep 20
   myjob02:
     name: My Job two
-    runs-on: TBS
+    runs-on: self-hosted
     needs: [myjob01]
     steps:
       - name: My Step 01 from job02
         id: job02step01
+        shell: cmd
         run: |
           echo "this is step01 from job02"
           sleep 30
       - name: My Step 02 from job02        
         id: job02step02
+        shell: cmd
         run: |
           echo "this is step02 from job02"
           sleep 30
       - name: My Step 03 from job02
         id: job02step03
+        shell: cmd
         run: |
           echo "this is step03 from job02"
           sleep 30
   myjob03:
     name: My Job three
-    runs-on: TBS    
+    runs-on: self-hosted    
     steps:
       - name: My Step 01 from job03
         id: job03step01
+        shell: cmd
         run: |
           echo "this is step01 from job03"
           sleep 20
       - name: My Step 02 from job03
         id: job03step02
+        shell: cmd
         run: |
           echo "this is step02 from job03"
           sleep 20
 
       - name: My Step 03 from job03
         id: job03step03
+        shell: cmd
         run: |
           echo "this is step03 from job03"
           sleep 20
