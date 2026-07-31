@@ -35,9 +35,12 @@ jobs:
     steps:
       - name: My Step 01 from job02
         id: job02step01
-        run: echo "this is step01 from job02"
-      - name: My Step 02 from job02
+        run: |
+          echo "this is step01 from job02"
+          sleep 60
+      - name: My Step 02 from job02        
         id: job02step02
+        needs: [job02step01]
         run: echo "this is step02 from job02"
       - name: My Step 03 from job02
         id: job02step03
