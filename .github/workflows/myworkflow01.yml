@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: My Step 01 from job01
         id: job01step01        
-        run: echo "this is step02 from job01, WF-ENV - ${{ env.WF-ENV }}, jbs-env - ${{ env.jbs-env}}, stp-env - ${{ env.stp-env}}"
+        run: echo "this is step02 from job01, WF-ENV - ${{ env.WF-ENV }}, jbs-env - ${{ env.jbs-env}}, stp-env - ${{ env.stp-env}}, rs01 - ${{ secrets.rs01 }}"
         env: 
           stp-env: '03-STP-ENV'
       - name: My Step 02 from job01
