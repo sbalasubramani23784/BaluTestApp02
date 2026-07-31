@@ -12,12 +12,16 @@ jobs:
     steps:
       - name: My Step 01 from job01
         id: job01step01        
-        run: echo "this is step02 from job01, WF-ENV - ${{ env.WF-ENV }}, jbs-env - ${{ env.jbs-env}}, stp-env - ${{ env.stp-env}}, rs01 - ${{ secrets.rs01 }}"
+        run: |
+          echo "this is step02 from job01, WF-ENV - ${{ env.WF-ENV }}, jbs-env - ${{ env.jbs-env}}, stp-env - ${{ env.stp-env}}, rs01 - ${{ secrets.rs01 }}"
+          sleep 20
         env: 
           stp-env: '03-STP-ENV'
       - name: My Step 02 from job01
         id: job01step02
-        run: echo "this is step02 from job01. ${{ env.test}}"
+        run: |
+          echo "this is step02 from job01. ${{ env.test}}"
+          sleep 20
       - name: My Step 03 from job01
         id: job01step03
         run: |
@@ -27,7 +31,7 @@ jobs:
           echo ${{ env.jbs-env }}
           echo ${{ vars.REFVAR01 }}
           echo ${{ secrets.rs01 }}
-          sleep 60
+          sleep 20
   myjob02:
     name: My Job two
     runs-on: ubuntu-latest
@@ -37,24 +41,34 @@ jobs:
         id: job02step01
         run: |
           echo "this is step01 from job02"
-          sleep 60
+          sleep 30
       - name: My Step 02 from job02        
         id: job02step02
-        run: echo "this is step02 from job02"
+        run: |
+          echo "this is step02 from job02"
+          sleep 30
       - name: My Step 03 from job02
         id: job02step03
-        run: echo "this is step03 from job02"
+        run: |
+          echo "this is step03 from job02"
+          sleep 30
   myjob03:
     name: My Job three
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest    
     steps:
       - name: My Step 01 from job03
         id: job03step01
-        run: echo "this is step01 from job03"
+        run: |
+          echo "this is step01 from job03"
+          sleep 20
       - name: My Step 02 from job03
         id: job03step02
-        run: echo "this is step02 from job03"
+        run: |
+          echo "this is step02 from job03"
+          sleep 20
+
       - name: My Step 03 from job03
         id: job03step03
-        run: echo "this is step03 from job03"
+        run: |
+          echo "this is step03 from job03"
+          sleep 20
