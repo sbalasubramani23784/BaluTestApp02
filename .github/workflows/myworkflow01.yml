@@ -27,10 +27,11 @@ jobs:
           echo ${{ env.jbs-env }}
           echo ${{ vars.REFVAR01 }}
           echo ${{ secrets.rs01 }}
+          sleep 60
   myjob02:
     name: My Job two
     runs-on: ubuntu-latest
-    
+    needs: [myjob01]
     steps:
       - name: My Step 01 from job02
         id: job02step01
